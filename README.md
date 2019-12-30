@@ -55,35 +55,6 @@ If you have the bitcoin-qt wallet you can take a look of all the blockchain insi
 | MacOS | ~/Library/Application\ Support/Bitcoin/blocks |
 | Windows | %APPDATA%\Bitcoin\blocks |
 
-## Essential header data to find the hash of the genesis block
-
-**version + prev_block + merkle_root + timestamp + bits + nonce**
-
-In that command, we skip the first 8 bytes (4 magic bytes that separate each block + 4 bytes of size) and print the next 80 bytes.
-```
-$ hexdump -C -s 8 -n 80 blk00000.dat
-00000008  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-00000018  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-00000028  00 00 00 00 3b a3 ed fd  7a 7b 12 b2 7a c7 2c 3e  |....;...z{..z.,>|
-00000038  67 76 8f 61 7f c8 1b c3  88 8a 51 32 3a 9f b8 aa  |gv.a......Q2:...|
-00000048  4b 1e 5e 4a 29 ab 5f 49  ff ff 00 1d 1d ac 2b 7c  |K.^J)._I......+||
-00000058
-```
-
-| variable | value (hex little indian) |
-| ------ | ------ |
-| version | 01000000 (set by the network) |
-| prev_block | 0000000000000000000000000000000000000000000000000000000000000000 (set by the network) |
-| merkle_root | 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a |
-| timestamp |  29ab5f49 |
-| bits | ffff001d |
-| nonce | 1dac2b7c |
-
-## Structure
-The data above can be split in to five pieces:
-
-![Sample output](./media/blkdat-schema.svg)
-
 ## The complete mined block (first 293 bytes)
 ```
 $ hexdump -C -n 293 blk00000.dat
@@ -109,6 +80,35 @@ $ hexdump -C -n 293 blk00000.dat
 00000120  ac 00 00 00 00                                    |.....|
 00000125
 ```
+
+## Structure of block
+The block can be split in to five pieces:
+
+![Sample output](./media/blkdat-schema.svg)
+
+## Essential header data to find the hash of the genesis block
+
+**version + prev_block + merkle_root + timestamp + bits + nonce**
+
+In that hexdump command, we skip the first 8 bytes (4 magic bytes that separate each block + 4 bytes of size) and print the next 80 bytes.
+```
+$ hexdump -C -s 8 -n 80 blk00000.dat
+00000008  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000018  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000028  00 00 00 00 3b a3 ed fd  7a 7b 12 b2 7a c7 2c 3e  |....;...z{..z.,>|
+00000038  67 76 8f 61 7f c8 1b c3  88 8a 51 32 3a 9f b8 aa  |gv.a......Q2:...|
+00000048  4b 1e 5e 4a 29 ab 5f 49  ff ff 00 1d 1d ac 2b 7c  |K.^J)._I......+||
+00000058
+```
+
+| variable | value (hex little indian) |
+| ------ | ------ |
+| version | 01000000 (set by the network) |
+| prev_block | 0000000000000000000000000000000000000000000000000000000000000000 (set by the network) |
+| merkle_root | 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a |
+| timestamp |  29ab5f49 |
+| bits | ffff001d |
+| nonce | 1dac2b7c |
 
 ## The complete fist 3 mined blocks (first 739 bytes)
 ```
