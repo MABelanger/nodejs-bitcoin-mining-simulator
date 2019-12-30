@@ -9,3 +9,7 @@ node_modules
 
 # personal docs
 _docs
+
+# keep it simple
+package-lock.json
+yarn.lock

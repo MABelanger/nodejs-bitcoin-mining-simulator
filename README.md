@@ -55,19 +55,19 @@ If you have the bitcoin-qt wallet you can take a look of all the blockchain insi
 | MacOS | ~/Library/Application\ Support/Bitcoin/blocks |
 | Windows | %APPDATA%\Bitcoin\blocks |
 
-## Essential header data to find the nonce of the genesis block
+## Essential header data to find the hash of the genesis block
 
-version + prev_block + merkle_root + timestamp + bits
+**version + prev_block + merkle_root + timestamp + bits + nonce**
 
-In that command, we skip the first 8 bytes (magic number that separate each block) and print the next 76 bytes to exclude the nouce found.
+In that command, we skip the first 8 bytes (magic number that separate each block) and print the next 80 bytes.
 ```
-$ hexdump -C -s 8 -n 76 blk00000.dat
+$ hexdump -C -s 8 -n 80 blk00000.dat
 00000008  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000018  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000028  00 00 00 00 3b a3 ed fd  7a 7b 12 b2 7a c7 2c 3e  |....;...z{..z.,>|
 00000038  67 76 8f 61 7f c8 1b c3  88 8a 51 32 3a 9f b8 aa  |gv.a......Q2:...|
-00000048  4b 1e 5e 4a 29 ab 5f 49  ff ff 00 1d              |K.^J)._I....|
-00000054
+00000048  4b 1e 5e 4a 29 ab 5f 49  ff ff 00 1d 1d ac 2b 7c  |K.^J)._I......+||
+00000058
 ```
 
 | variable | value (hex little indian) |
@@ -77,6 +77,7 @@ $ hexdump -C -s 8 -n 76 blk00000.dat
 | merkle_root | 3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a |
 | timestamp |  29ab5f49 |
 | bits | ffff001d |
+| nonce | 1dac2b7c |
 
 ## The complete mined block (first 293 bytes)
 ```
@@ -169,6 +170,8 @@ $ hexdump -C  -n 739 blk00000.dat
 ## MISC reference
 
 [Calculating the Merkle Root for a block](https://bitcoindev.network/calculating-the-merkle-root-for-a-block/)
+
+[Calculate the target in python](https://bigishdata.com/2017/11/13/how-to-build-a-blockchain-part-4-1-bitcoin-proof-of-work-difficulty-explained/)
 
 [First block at blockchair](https://blockchair.com/bitcoin/block/0)
 
