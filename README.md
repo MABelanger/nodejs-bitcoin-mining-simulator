@@ -55,7 +55,7 @@ If you have the bitcoin-qt wallet you can take a look of all the blockchain insi
 | MacOS | ~/Library/Application\ Support/Bitcoin/blocks |
 | Windows | %APPDATA%\Bitcoin\blocks |
 
-## The complete mined block (first 293 bytes)
+## The complete mined genesis block (first 293 bytes)
 ```
 $ hexdump -C -n 293 blk00000.dat
 
@@ -80,6 +80,9 @@ $ hexdump -C -n 293 blk00000.dat
 00000120  ac 00 00 00 00                                    |.....|
 00000125
 ```
+
+## The raw hex genesis block
+The raw hex of a mined block can be found here: [https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f?format=hex](https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f?format=hex). Just replace the hash of the block to get another block.
 
 ## Structure of block
 The block can be split in to five pieces:
@@ -164,11 +167,6 @@ $ hexdump -C  -n 739 blk00000.dat
 000002e3
 ```
 
-## raw hex genesis block
-```
-0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c0101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000
-```
-
 ## Sample Output
 ![Sample output](./media/command_example.png)
 
@@ -179,5 +177,3 @@ $ hexdump -C  -n 739 blk00000.dat
 [Calculate the target in python](https://bigishdata.com/2017/11/13/how-to-build-a-blockchain-part-4-1-bitcoin-proof-of-work-difficulty-explained/)
 
 [First block at blockchair](https://blockchair.com/bitcoin/block/0)
-
-[Raw hex genesis block](https://blockchain.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f?format=hex)
