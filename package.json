@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-bitcoin-mining-simulator",
+  "version": "1.0.0",
+  "description": "A NodeJs implementation of the Bitcoin mining algorithm",
+  "main": "src/lib/index.js",
+  "dependencies": {
+    "jssha": "^2.3.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/lib/index.js",
+    "nodemon": "./node_modules/.bin/nodemon --watch src --exec node src/lib/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

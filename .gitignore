@@ -1,0 +1,11 @@
+# node modules
+node_modules
+
+# MAC General
+.DS_Store
+
+# Thumbnails
+._*
+
+# personal docs
+_docs
