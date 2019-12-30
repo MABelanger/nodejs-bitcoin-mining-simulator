@@ -59,7 +59,7 @@ If you have the bitcoin-qt wallet you can take a look of all the blockchain insi
 
 **version + prev_block + merkle_root + timestamp + bits + nonce**
 
-In that command, we skip the first 8 bytes (magic bytes that separate each block) and print the next 80 bytes.
+In that command, we skip the first 8 bytes (4 magic bytes that separate each block + 4 bytes of size) and print the next 80 bytes.
 ```
 $ hexdump -C -s 8 -n 80 blk00000.dat
 00000008  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|

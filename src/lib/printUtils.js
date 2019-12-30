@@ -12,13 +12,13 @@ function printSolutionFound(headerSha256Hex, target){
 }
 
 function printHeader(header){
-  const { version, prevBlockHash, merkleRoot, timestamp, sizeBits, nonce } = header;
+  const { version, prevBlockHash, merkleRoot, timestamp, bits, nonce } = header;
   console.log('Base on the header:');
   console.log('  version:     ' + version);
   console.log('  prev_block:  ' + prevBlockHash);
   console.log('  merkle_root: ' + merkleRoot);
   console.log('  timestamp:   ' + timestamp);
-  console.log('  size_bits:   ' + sizeBits);
+  console.log('  bits:        ' + bits);
   console.log('  nonce:       ' + nonce);
 }
 
