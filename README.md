@@ -79,6 +79,8 @@ $ hexdump -C -s 8 -n 80 blk00000.dat
 | bits | ffff001d |
 | nonce | 1dac2b7c |
 
+![Sample output](./media/blkdat-schema.svg)
+
 ## The complete mined block (first 293 bytes)
 ```
 $ hexdump -C -n 293 blk00000.dat
