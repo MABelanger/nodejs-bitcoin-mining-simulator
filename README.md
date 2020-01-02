@@ -170,9 +170,39 @@ $ hexdump -C  -n 739 blk00000.dat
 ## Sample Output
 ![Sample output](./media/command_example.png)
 
-## Usefull command
 
-### Access bitcoind with jsonrpc
+## Get json genesis blocks
+```
+$ ./bitcoin-cli getblock 0000000009c170e34318cf5d9790ab6c2e7c7d2caf8874277736d10fdee7ed91
+```
+output :
+```
+{
+  "hash": "0000000009c170e34318cf5d9790ab6c2e7c7d2caf8874277736d10fdee7ed91",
+  "confirmations": 553865,
+  "strippedsize": 417,
+  "size": 417,
+  "weight": 1668,
+  "height": 57047,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "f88b0ecfb2c149160ea1ad6d6ba74630ea186e71cbf495fa49ab48655ddd06b0",
+  "tx": [
+    "ac7e83f957393a2121ffa92d54ffa34a4cdf8de1294d6011c82480ad48ad805a",
+    "477404fa3c92eaefa7e77d6c9b2669c5d96cd70b9056b671cc3fceba2cee524e"
+  ],
+  "time": 1274553780,
+  "mediantime": 1274551384,
+  "nonce": 11479036,
+  "bits": "1c159c24",
+  "difficulty": 11.84622814970471,
+  "chainwork": "00000000000000000000000000000000000000000000000000026c9018fb9590",
+  "nTx": 2,
+  "previousblockhash": "000000000e8c933840c06f0652ebadde5f69301274d4ba8e402ed3da9d9d71ea",
+  "nextblockhash": "00000000049619c0f96e9ed61cfaf54928547224d00ef38f483832095dd5ff51"
+}
+```
+## Access bitcoind with jsonrpc
 
 add the line into bitcoin.conf:
 ```
@@ -181,9 +211,9 @@ rpcuser=myUser
 rpcpassword=myPasswordd
 ```
 
-restart bitcoind
+start bitcoind
 ```
-./bitcoin-0.19.0.1/bin/bitcoind
+$ ./bitcoind
 ```
 
 ### getrawmempool with curl
