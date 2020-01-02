@@ -170,6 +170,27 @@ $ hexdump -C  -n 739 blk00000.dat
 ## Sample Output
 ![Sample output](./media/command_example.png)
 
+## Usefull command
+
+### Access bitcoind with jsonrpc
+
+add the line into bitcoin.conf:
+```
+server=1
+rpcuser=myUser
+rpcpassword=myPasswordd
+```
+
+restart bitcoind
+```
+./bitcoin-0.19.0.1/bin/bitcoind
+```
+
+### getrawmempool with curl
+```
+curl --user myUser --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawmempool", "params": [true] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+```
+
 ## MISC reference
 
 [Calculating the Merkle Root for a block](https://bitcoindev.network/calculating-the-merkle-root-for-a-block/)
